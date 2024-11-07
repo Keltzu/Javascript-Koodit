@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Sum, Product, and Average</title>
+</head>
+<body>
+
+    <h2>Results:</h2>
+    <p id="sum"></p>
+    <p id="product"></p>
+    <p id="average"></p>
+
+    <script>
+        let num1 = Number(prompt("Enter the first integer:"));
+        let num2 = Number(prompt("Enter the second integer:"));
+        let num3 = Number(prompt("Enter the third integer:"));
+
+        let sum = num1 + num2 + num3;
+        let product = num1 * num2 * num3;
+        let average = sum / 3;
+
+        document.getElementById("sum").textContent = `Sum: ${sum}`;
+        document.getElementById("product").textContent = `Product: ${product}`;
+        document.getElementById("average").textContent = `Average: ${average}`;
+    </script>
+
+</body>
+</html>

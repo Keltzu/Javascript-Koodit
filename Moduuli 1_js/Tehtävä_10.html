@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dice Probability Calculator</title>
+</head>
+<body>
+  <h1>Dice Probability Calculator</h1>
+  <button onclick="calculateProbability()">Calculate Probability</button>
+  <p id="result"></p>
+
+  <script>
+    function calculateProbability() {
+      const numDice = parseInt(prompt("Enter the number of dice:"));
+      const targetSum = parseInt(prompt("Enter the desired sum:"));
+      const totalRolls = 10000;
+      let successfulRolls = 0;
+
+      for (let i = 0; i < totalRolls; i++) {
+        let sum = 0;
+        for (let j = 0; j < numDice; j++) {
+          sum += Math.floor(Math.random() * 6) + 1; // Roll a die (1-6)
+        }
+        if (sum === targetSum) {
+          successfulRolls++;
+        }
+      }
+
+      const probability = (successfulRolls / totalRolls) * 100; // Convert to percentage
+      document.getElementById("result").innerText =
+        `Probability to get sum ${targetSum} with ${numDice} dice is ${probability.toFixed(2)}%`;
+    }
+  </script>
+</body>
+</html>
