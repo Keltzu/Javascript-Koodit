@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dog Name List</title>
+</head>
+<body>
+  <h1>Dog Name List</h1>
+  <button onclick="listDogNames()">Enter Dog Names</button>
+  <ul id="dogList"></ul>
+
+  <script>
+    function listDogNames() {
+      const dogs = [];
+
+      for (let i = 0; i < 6; i++) {
+        const name = prompt(`Enter the name of dog ${i + 1}:`);
+        dogs.push(name);
+      }
+
+      dogs.sort().reverse();
+      
+      const dogList = document.getElementById("dogList");
+      dogList.innerHTML = ""; // Clear previous list
+
+      for (const name of dogs) {
+        const li = document.createElement("li");
+        li.innerText = name;
+        dogList.appendChild(li);
+      }
+    }
+  </script>
+</body>
+</html>

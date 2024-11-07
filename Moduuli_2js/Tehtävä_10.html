@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voting Program</title>
+</head>
+<body>
+  <h1>Voting Program</h1>
+  <script>
+
+    function voting() {
+
+      const candidateCount = parseInt(prompt("Enter the number of candidates:"));
+      const candidates = [];
+
+
+      for (let i = 1; i <= candidateCount; i++) {
+        const candidateName = prompt(`Enter the name for candidate ${i}:`);
+        candidates.push({ name: candidateName, votes: 0 });
+      }
+
+
+      const voterCount = parseInt(prompt("Enter the number of voters:"));
+
+
+      for (let i = 1; i <= voterCount; i++) {
+        const vote = prompt(`Voter ${i}, enter the candidate name you are voting for:`).trim();
+
+        if (vote === "") {
+          console.log(`Voter ${i} cast an empty vote.`);
+        } else {
+
+          const candidate = candidates.find(c => c.name.toLowerCase() === vote.toLowerCase());
+          if (candidate) {
+            candidate.votes++;
+          } else {
+            console.log(`Invalid vote from Voter ${i}: Candidate not found.`);
+          }
+        }
+      }
+
+
+      candidates.sort((a, b) => b.votes - a.votes);
+
+
+      const winner = candidates[0];
+      console.log(`The winner is ${winner.name} with ${winner.votes} votes.`);
+
+
+      console.log("Results:");
+      candidates.forEach(candidate => {
+        console.log(`${candidate.name}: ${candidate.votes} votes`);
+      });
+    }
+
+
+    voting();
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dice Roll</title>
+</head>
+<body>
+  <h1>Dice Roll</h1>
+  <button onclick="rollUntilSix()">Roll Dice</button>
+  <ul id="rollResults"></ul>
+
+  <script>
+
+    function rollDice() {
+      return Math.floor(Math.random() * 6) + 1;
+    }
+
+
+    function rollUntilSix() {
+      const rollResults = document.getElementById("rollResults");
+      rollResults.innerHTML = "";
+
+      let roll;
+      do {
+        roll = rollDice();
+        const li = document.createElement("li");
+        li.innerText = `Roll: ${roll}`;
+        rollResults.appendChild(li);
+      } while (roll !== 6);
+    }
+  </script>
+</body>
+</html>

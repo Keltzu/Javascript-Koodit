@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Dice Roll</title>
+</head>
+<body>
+  <h1>Custom Dice Roll</h1>
+  <button onclick="rollUntilMax()">Roll Dice</button>
+  <ul id="rollResults"></ul>
+
+  <script>
+
+    function rollDice(sides) {
+      return Math.floor(Math.random() * sides) + 1;
+    }
+
+
+    function rollUntilMax() {
+      const sides = parseInt(prompt("Enter the number of sides on the dice:"));
+      if (isNaN(sides) || sides < 2) {
+        alert("Please enter a valid number of sides (at least 2).");
+        return;
+      }
+
+      const rollResults = document.getElementById("rollResults");
+      rollResults.innerHTML = "";
+
+      let roll;
+      do {
+        roll = rollDice(sides);
+        const li = document.createElement("li");
+        li.innerText = `Roll: ${roll}`;
+        rollResults.appendChild(li);
+      } while (roll !== sides);
+    }
+  </script>
+</body>
+</html>
